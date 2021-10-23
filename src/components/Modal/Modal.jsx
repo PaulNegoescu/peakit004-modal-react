@@ -14,21 +14,6 @@ export function Modal({ isOpen, onClose, children }) {
     return null;
   }
 
-  let Header = null;
-  let Footer = null;
-  let other = [];
-  for (const child of children) {
-    if (child.type.name === 'ModalHeader') {
-      Header = child;
-      continue;
-    }
-    if (child.type.name === 'ModalFooter') {
-      Footer = child;
-      continue;
-    }
-    other.push(child);
-  }
-
   return (
     <ModalPortal>
       <FocusOn
@@ -47,9 +32,7 @@ export function Modal({ isOpen, onClose, children }) {
             >
               &times;
             </button>
-            {/* {Header} */}
-            {other}
-            {Footer}
+            {children}
           </section>
         </div>
       </FocusOn>
