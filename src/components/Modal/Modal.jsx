@@ -13,12 +13,11 @@ export function Modal({ isOpen, onClose, children }) {
   if (!isOpen) {
     return null;
   }
-  const headerName = ModalHeader.name;
-  const footerName = ModalFooter.name;
-  const slots = [headerName, footerName];
-  let header = children.find((child) => child.type.name === headerName);
-  let footer = children.find((child) => child.type.name === footerName);
-  let other = children.filter((child) => !slots.includes(child.type.name));
+
+  const slots = [ModalHeader, ModalFooter];
+  let header = children.find((child) => child.type === ModalHeader);
+  let footer = children.find((child) => child.type === ModalFooter);
+  let other = children.filter((child) => !slots.includes(child.type));
 
   return (
     <ModalPortal>
